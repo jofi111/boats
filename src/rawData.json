@@ -1,59 +1,51 @@
 {
-  "cars": [
+  "boats": [
     {
-      "id": 5,
-      "brand": "Škoda",
-      "model": "Scala",
-      "reg": "2AP0809",
-      "km": 159212,
+      "id": 1,
+      "brand": "Yamaha",
+      "model": "AR240",
+      "reg": "YMH12345",
+      "hours": 350,
+      "year": 2019
+    },
+    {
+      "id": 2,
+      "brand": "Sea Ray",
+      "model": "SLX 310",
+      "reg": "SR98765",
+      "hours": 200,
+      "year": 2020
+    },
+    {
+      "id": 3,
+      "brand": "Boston Whaler",
+      "model": "230 Outrage",
+      "reg": "BW67890",
+      "hours": 150,
+      "year": 2018
+    },
+    {
+      "id": 4,
+      "brand": "Chaparral",
+      "model": "SSI 21",
+      "reg": "CHP54321",
+      "hours": 400,
       "year": 2017
     },
     {
-      "id": 9,
-      "brand": "Honda",
-      "model": "Civic",
-      "reg": "9T64589",
-      "km": 101515,
-      "year": 2005
+      "id": 5,
+      "brand": "MasterCraft",
+      "model": "XT21",
+      "reg": "MC24680",
+      "hours": 100,
+      "year": 2021
     },
     {
-      "id": 12,
-      "brand": "Škoda",
-      "model": "Fabia",
-      "reg": "6MA8915",
-      "km": 230555,
-      "year": 2012
-    },
-    {
-      "id": 20,
-      "brand": "Seat",
-      "model": "Ibiza",
-      "reg": "8TR9634",
-      "km": 159453,
-      "year": 2008
-    },
-    {
-      "id": 21,
-      "brand": "Škoda",
-      "model": "Felicia",
-      "reg": "1T15825",
-      "km": 256996,
-      "year": 1999
-    },
-    {
-      "id": 25,
-      "brand": "Škoda",
-      "model": "Felicia",
-      "reg": "1L26828",
-      "km": 228249,
-      "year": 2000
-    },
-    {
-      "id": 26,
-      "brand": "Seat",
-      "model": "Leon",
-      "reg": "1AN5586",
-      "km": 152023,
+      "id": 6,
+      "brand": "Tracker",
+      "model": "Pro Team 190 TX",
+      "reg": "TRK13579",
+      "hours": 300,
       "year": 2016
     }
   ]

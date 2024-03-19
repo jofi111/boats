@@ -1,8 +1,10 @@
+import { useState } from "react";
 import "./App.css";
 import rawData from "./rawData.json";
 
 function App() {
-  return <div className="container">Hello</div>;
+  const [cars, setCars] = useState(rawData.cars);
+  return <div className="container">Ahoy</div>;
 }
 
 export default App;
