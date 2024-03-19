@@ -1,10 +1,15 @@
 import { useState } from "react";
 import "./App.css";
 import rawData from "./rawData.json";
+import BoatTable from "./components/BoatTable/BoatTable";
 
 function App() {
-  const [cars, setCars] = useState(rawData.cars);
-  return <div className="container">Ahoy</div>;
+  const [boats, setBoats] = useState(rawData.boats);
+  return (
+    <div className="container">
+      <BoatTable data={boats} />
+    </div>
+  );
 }
 
 export default App;
