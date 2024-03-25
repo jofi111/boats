@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import rawData from "./rawData.json";
 import BoatTable from "./components/BoatTable/BoatTable";
@@ -18,6 +18,10 @@ function App() {
   const handleNewData = (updatedBoat) => {
     setNewBoat(updatedBoat);
   };
+
+  useEffect(() => {
+    console.log(newBoat);
+  }, [newBoat]);
 
   return (
     <div className="container">
