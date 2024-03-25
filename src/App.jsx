@@ -27,6 +27,14 @@ function App() {
     const boatsToUpdate = [...boats];
     boatsToUpdate.push(newBoat);
     setBoats(boatsToUpdate);
+    setNewBoat({
+      id: newBoat.id + 1,
+      brand: "",
+      model: "",
+      reg: "",
+      hours: "",
+      year: "",
+    });
   };
 
   useEffect(() => {
