@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ data }) {
+function Form({ data, handleNewData }) {
   const handleChange = (e) => {
     let temp = { ...data };
     const { name, value } = e.target;
@@ -28,6 +28,7 @@ function Form({ data }) {
       default:
         break;
     }
+    handleNewData(temp);
   };
 
   return (

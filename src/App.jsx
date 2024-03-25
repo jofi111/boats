@@ -14,11 +14,16 @@ function App() {
     hours: "",
     year: "",
   });
+
+  const handleNewData = (updatedBoat) => {
+    setNewBoat(updatedBoat);
+  };
+
   return (
     <div className="container">
       <BoatTable data={boats} />
       <p>Form for adding the boat</p>
-      <Form data={newBoat} />
+      <Form data={newBoat} handleNewData={handleNewData} />
     </div>
   );
 }
