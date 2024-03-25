@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ data, handleNewData }) {
+function Form({ data, handleNewData, handleUpdate }) {
   const handleChange = (e) => {
     let temp = { ...data };
     const { name, value } = e.target;
@@ -79,7 +79,7 @@ function Form({ data, handleNewData }) {
         />
       </div>
       <div>
-        <button>Add data</button>
+        <button onClick={handleUpdate}>Add data</button>
       </div>
     </div>
   );

@@ -19,15 +19,29 @@ function App() {
     setNewBoat(updatedBoat);
   };
 
+  // useEffect(() => {
+  //   console.log(newBoat);
+  // }, [newBoat]);
+
+  const handleUpdate = () => {
+    const boatsToUpdate = [...boats];
+    boatsToUpdate.push(newBoat);
+    setBoats(boatsToUpdate);
+  };
+
   useEffect(() => {
-    console.log(newBoat);
-  }, [newBoat]);
+    console.log(boats);
+  }, [boats]);
 
   return (
     <div className="container">
       <BoatTable data={boats} />
       <p>Form for adding the boat</p>
-      <Form data={newBoat} handleNewData={handleNewData} />
+      <Form
+        data={newBoat}
+        handleNewData={handleNewData}
+        handleUpdate={handleUpdate}
+      />
     </div>
   );
 }
