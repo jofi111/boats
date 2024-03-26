@@ -23,18 +23,47 @@ function App() {
   //   console.log(newBoat);
   // }, [newBoat]);
 
+  const inputsCheck = (boat) => {
+    const inputBoat = {
+      ...boat,
+      brand: boat.brand.trim() ? boat.brand : "empty",
+      model: boat.model.trim() ? boat.model : "empty",
+      reg: boat.reg.trim() ? boat.reg : "empty",
+      hours: boat.hours.toString().trim() ? parseInt(boat.hours) : 0,
+      year: boat.year.toString().trim() ? parseInt(boat.year) : 0,
+    };
+    return inputBoat;
+  };
+
+  const confirmBoat = (boat) => {
+    return window.confirm(
+      "Do you want to add these data?\n" +
+        `Boat brand: ${boat.brand}\n` +
+        `Boat model: ${boat.model}\n` +
+        `Register: ${boat.reg}\n` +
+        `Hours: ${boat.hours}\n` +
+        `Year: ${boat.year}\n`
+    );
+  };
+
   const handleUpdate = () => {
-    const boatsToUpdate = [...boats];
-    boatsToUpdate.push(newBoat);
-    setBoats(boatsToUpdate);
-    setNewBoat({
-      id: newBoat.id + 1,
-      brand: "",
-      model: "",
-      reg: "",
-      hours: "",
-      year: "",
-    });
+    let temp = inputsCheck(newBoat);
+    if (confirmBoat(temp)) {
+      const boatsToUpdate = [...boats];
+      boatsToUpdate.push(temp);
+      setBoats(boatsToUpdate);
+      setNewBoat({
+        id: newBoat.id + 1,
+        brand: "",
+        model: "",
+        reg: "",
+        hours: "",
+        year: "",
+      });
+      alert("New boat data added.");
+    } else {
+      alert("New boat data adding cancelled.");
+    }
   };
 
   useEffect(() => {

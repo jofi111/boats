@@ -34,49 +34,49 @@ function Form({ data, handleNewData, handleUpdate }) {
   return (
     <div>
       <div>
-        <label htmlFor="brand">Brand</label>
         <input
           type="text"
           name="brand"
           value={data.brand}
           onChange={handleChange}
         />
+        <label htmlFor="brand">Brand</label>
       </div>
       <div>
-        <label htmlFor="model">Model</label>
         <input
           type="text"
           name="model"
           value={data.model}
           onChange={handleChange}
         />
+        <label htmlFor="model">Model</label>
       </div>
       <div>
-        <label htmlFor="reg">Register</label>
         <input
           type="text"
           name="reg"
           value={data.reg}
           onChange={handleChange}
         />
+        <label htmlFor="reg">Register</label>
       </div>
       <div>
-        <label htmlFor="hours">Hours</label>
         <input
           type="number"
           name="hours"
           value={data.hours}
           onChange={handleChange}
         />
+        <label htmlFor="hours">Hours</label>
       </div>
       <div>
-        <label htmlFor="year">Year</label>
         <input
           type="number"
           name="year"
           value={data.year}
           onChange={handleChange}
         />
+        <label htmlFor="year">Year</label>
       </div>
       <div>
         <button onClick={handleUpdate}>Add data</button>
