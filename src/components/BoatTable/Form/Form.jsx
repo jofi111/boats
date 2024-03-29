@@ -1,6 +1,6 @@
 import React from "react";
 
-function Form({ data, handleNewData, handleUpdate }) {
+function Form({ data, handleNewData, handleUpdate, id }) {
   const handleChange = (e) => {
     let temp = { ...data };
     const { name, value } = e.target;
@@ -28,11 +28,11 @@ function Form({ data, handleNewData, handleUpdate }) {
       default:
         break;
     }
-    handleNewData(temp);
+    handleNewData(temp, id);
   };
 
   return (
-    <div>
+    <div id={id}>
       <div>
         <input
           type="text"
@@ -79,7 +79,8 @@ function Form({ data, handleNewData, handleUpdate }) {
         <label htmlFor="year">Year</label>
       </div>
       <div>
-        <button onClick={handleUpdate}>Add data</button>
+        <button onClick={() => handleUpdate(id)}>Add data</button>{" "}
+        {/*handleUpdate musi byt s parametrem id*/}
       </div>
     </div>
   );

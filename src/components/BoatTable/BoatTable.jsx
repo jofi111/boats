@@ -1,7 +1,7 @@
 import React from "react";
 import "./BoatTable.css";
 
-function BoatTable({ data }) {
+function BoatTable({ data, handleDelete, handleEdit }) {
   if (data.length === 0) {
     return <p>No data here</p>;
   }
@@ -26,10 +26,10 @@ function BoatTable({ data }) {
             <td>{item.hours}</td>
             <td>{item.year}</td>
             <td>
-              <button>Edit</button>
+              <button onClick={() => handleEdit(item.id)}>Edit</button>
             </td>
             <td>
-              <button>Remove</button>
+              <button onClick={() => handleDelete(item.id)}>Remove</button>
             </td>
           </tr>
         ))}

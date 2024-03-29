@@ -15,13 +15,29 @@ function App() {
     year: "",
   });
 
-  const handleNewData = (updatedBoat) => {
-    setNewBoat(updatedBoat);
-  };
+  const [boatToEdit, setBoatToEdit] = useState({
+    id: 0,
+    brand: "",
+    model: "",
+    reg: "",
+    hours: "",
+    year: "",
+  });
 
-  // useEffect(() => {
-  //   console.log(newBoat);
-  // }, [newBoat]);
+  const handleNewData = (updatedBoat, source) => {
+    switch (source) {
+      case "add-boat-form": {
+        setNewBoat(updatedBoat);
+        break;
+      }
+      case "edit-boat-form": {
+        setBoatToEdit(updatedBoat);
+        break;
+      }
+      default:
+        break;
+    }
+  };
 
   const inputsCheck = (boat) => {
     const inputBoat = {
@@ -46,36 +62,103 @@ function App() {
     );
   };
 
-  const handleUpdate = () => {
-    let temp = inputsCheck(newBoat);
-    if (confirmBoat(temp)) {
-      const boatsToUpdate = [...boats];
-      boatsToUpdate.push(temp);
-      setBoats(boatsToUpdate);
-      setNewBoat({
-        id: newBoat.id + 1,
-        brand: "",
-        model: "",
-        reg: "",
-        hours: "",
-        year: "",
-      });
-      alert("New boat data added.");
-    } else {
-      alert("New boat data adding cancelled.");
+  const handleUpdate = (source) => {
+    let temp;
+    switch (source) {
+      case "add-boat-form": {
+        temp = inputsCheck(newBoat);
+        if (confirmBoat(temp)) {
+          const boatsToUpdate = [...boats];
+          boatsToUpdate.push(temp);
+          setBoats(boatsToUpdate);
+          setNewBoat({
+            id: newBoat.id + 1,
+            brand: "",
+            model: "",
+            reg: "",
+            hours: "",
+            year: "",
+          });
+          alert("New boat data added.");
+        } else {
+          alert("New boat data adding cancelled.");
+        }
+        break;
+      }
+      case "edit-boat-form": {
+        temp = inputsCheck(boatToEdit);
+        if (confirmBoat(temp)) {
+          const index = boats.findIndex((boat) => boat.id === temp.id);
+          if (index !== -1) {
+            const boatsToUpdate = [...boats];
+            boatsToUpdate[index] = temp;
+            setBoats(boatsToUpdate);
+            setBoatToEdit({
+              id: 0,
+              brand: "",
+              model: "",
+              reg: "",
+              hours: "",
+              year: "",
+            });
+            alert("Boat data edited");
+          } else {
+            alert("Boat with this ID wasn't found");
+            setBoatToEdit({
+              id: 0,
+              brand: "",
+              model: "",
+              reg: "",
+              hours: "",
+              year: "",
+            });
+          }
+        } else {
+          alert("Editing canceled");
+        }
+        break;
+      }
+      default:
+        break;
     }
   };
 
+  const handleDelete = (idToDel) => {
+    const temp = boats.filter((boat) => boat.id !== idToDel);
+    setBoats(temp);
+  };
+
+  const handleEdit = (idToEdit) => {
+    const temp = boats.filter((boat) => boat.id === idToEdit);
+    setBoatToEdit(...temp);
+  };
+
   useEffect(() => {
-    console.log(boats);
-  }, [boats]);
+    console.log(boatToEdit);
+  }, [boatToEdit]);
+
+  // useEffect(() => {
+  //   console.log(boats);
+  // }, [boats]);
 
   return (
     <div className="container">
-      <BoatTable data={boats} />
+      <BoatTable
+        data={boats}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
       <p>Form for adding the boat</p>
       <Form
+        id="add-boat-form"
         data={newBoat}
+        handleNewData={handleNewData}
+        handleUpdate={handleUpdate}
+      />
+      <p>Edit the boat</p>
+      <Form
+        id="edit-boat-form"
+        data={boatToEdit}
         handleNewData={handleNewData}
         handleUpdate={handleUpdate}
       />
