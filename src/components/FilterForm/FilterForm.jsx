@@ -4,7 +4,7 @@ function FilterForm({ data }) {
   const [brands, setBrands] = useState([]); //nastaveni prazdneho pole s useEffect, aby se pole aktualizovalo vzdy kdyz se zmeni data
 
   useEffect(() => {
-    data.map((boat) => boat.brand);
+    new Set(data.map((boat) => boat.brand));
   }, [data]);
 
   return (
