@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import rawData from "./rawData.json";
 import BoatTable from "./components/BoatTable/BoatTable";
-import Form from "./components/BoatTable/Form/Form";
+import Form from "./components/Form/Form";
 
 function App() {
   const [boats, setBoats] = useState(rawData.boats);
