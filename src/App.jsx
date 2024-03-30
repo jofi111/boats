@@ -144,7 +144,7 @@ function App() {
 
   return (
     <div className="container">
-      <FilterForm />
+      <FilterForm data={boats} />
       <BoatTable
         data={boats}
         handleDelete={handleDelete}

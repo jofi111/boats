@@ -1,6 +1,6 @@
 import React from "react";
 
-function FilterForm() {
+function FilterForm({ data }) {
   return (
     <fieldset>
       <legend>Boat filter</legend>
