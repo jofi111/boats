@@ -3,6 +3,7 @@ import "./App.css";
 import rawData from "./rawData.json";
 import BoatTable from "./components/BoatTable/BoatTable";
 import Form from "./components/Form/Form";
+import FilterForm from "./components/FilterForm/FilterForm";
 
 function App() {
   const [boats, setBoats] = useState(rawData.boats);
@@ -143,6 +144,7 @@ function App() {
 
   return (
     <div className="container">
+      <FilterForm />
       <BoatTable
         data={boats}
         handleDelete={handleDelete}
