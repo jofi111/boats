@@ -134,9 +134,9 @@ function App() {
     setBoatToEdit(...temp);
   };
 
-  useEffect(() => {
-    console.log(boatToEdit);
-  }, [boatToEdit]);
+  // useEffect(() => {
+  //   console.log(boatToEdit);
+  // }, [boatToEdit]);
 
   // useEffect(() => {
   //   console.log(boats);
