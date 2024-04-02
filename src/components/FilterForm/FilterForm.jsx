@@ -12,8 +12,12 @@ function FilterForm({ data }) {
     const tempBrands = Array.from(selectedOptions).map(
       (option) => option.value
     );
-    console.log(tempBrands);
+    setSelBrands(tempBrands);
   };
+
+  useEffect(() => {
+    console.log(selBrands);
+  }, [selBrands]);
 
   return (
     <fieldset>
