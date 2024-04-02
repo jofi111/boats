@@ -25,6 +25,8 @@ function App() {
     year: "",
   });
 
+  const [boatsToShow, setBoatsToShow] = useState(rawData.boats);
+
   const handleNewData = (updatedBoat, source) => {
     switch (source) {
       case "add-boat-form": {
@@ -142,11 +144,15 @@ function App() {
   //   console.log(boats);
   // }, [boats]);
 
+  const handleFilterData = (filteredBoats) => {
+    setBoatsToShow(filteredBoats);
+  };
+
   return (
     <div className="container">
-      <FilterForm data={boats} />
+      <FilterForm data={boats} handleFilterData={handleFilterData} />
       <BoatTable
-        data={boats}
+        data={boatsToShow}
         handleDelete={handleDelete}
         handleEdit={handleEdit}
       />

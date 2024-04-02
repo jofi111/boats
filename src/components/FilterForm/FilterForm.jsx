@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function FilterForm({ data }) {
+function FilterForm({ data, handleFilterData }) {
   const [brands, setBrands] = useState([]); //nastaveni prazdneho pole s useEffect, aby se pole aktualizovalo vzdy kdyz se zmeni data
   const [selBrands, setSelBrands] = useState([]); //selected brands, defaultne neni nic oznacene
   useEffect(() => {
@@ -15,10 +15,15 @@ function FilterForm({ data }) {
     setSelBrands(tempBrands);
   };
 
-  useEffect(() => {
-    console.log(selBrands);
-  }, [selBrands]);
+  //   useEffect(() => {
+  //     console.log(selBrands);
+  //   }, [selBrands]);
 
+  const handleFilter = () => {
+    let filtered;
+    filtered = data.filter((boat) => selBrands.includes(boat.brand));
+    handleFilterData(filtered);
+  };
   return (
     <fieldset>
       <legend>Boat filter</legend>
@@ -34,6 +39,9 @@ function FilterForm({ data }) {
             <option key={brand}>{brand}</option>
           ))}
         </select>
+      </div>
+      <div>
+        <button onClick={handleFilter}>Filter boats</button>
       </div>
     </fieldset>
   );
