@@ -48,8 +48,8 @@ function App() {
       brand: boat.brand.trim() ? boat.brand : "empty",
       model: boat.model.trim() ? boat.model : "empty",
       reg: boat.reg.trim() ? boat.reg : "empty",
-      hours: boat.hours.toString().trim() ? parseInt(boat.hours) : 0,
-      year: boat.year.toString().trim() ? parseInt(boat.year) : 0,
+      hours: parseInt(boat.hours) || 0,
+      year: parseInt(boat.year) || 0,
     };
     return inputBoat;
   };
@@ -74,6 +74,7 @@ function App() {
           const boatsToUpdate = [...boats];
           boatsToUpdate.push(temp);
           setBoats(boatsToUpdate);
+          setBoatsToShow(boatsToUpdate);
           setNewBoat({
             id: newBoat.id + 1,
             brand: "",
@@ -96,6 +97,7 @@ function App() {
             const boatsToUpdate = [...boats];
             boatsToUpdate[index] = temp;
             setBoats(boatsToUpdate);
+            setBoatsToShow(boatsToUpdate);
             setBoatToEdit({
               id: 0,
               brand: "",
@@ -129,6 +131,7 @@ function App() {
   const handleDelete = (idToDel) => {
     const temp = boats.filter((boat) => boat.id !== idToDel);
     setBoats(temp);
+    setBoatsToShow(temp);
   };
 
   const handleEdit = (idToEdit) => {
