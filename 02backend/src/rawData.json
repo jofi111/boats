@@ -1,0 +1,52 @@
+{
+  "boats": [
+    {
+      "id": 1,
+      "brand": "Yamaha",
+      "model": "AR240",
+      "reg": "YMH12345",
+      "hours": 350,
+      "year": 2019
+    },
+    {
+      "id": 2,
+      "brand": "Sea Ray",
+      "model": "SLX 310",
+      "reg": "SR98765",
+      "hours": 200,
+      "year": 2020
+    },
+    {
+      "id": 3,
+      "brand": "Boston Whaler",
+      "model": "230 Outrage",
+      "reg": "BW67890",
+      "hours": 150,
+      "year": 2018
+    },
+    {
+      "id": 4,
+      "brand": "Chaparral",
+      "model": "SSI 21",
+      "reg": "CHP54321",
+      "hours": 400,
+      "year": 2017
+    },
+    {
+      "id": 5,
+      "brand": "MasterCraft",
+      "model": "XT21",
+      "reg": "MC24680",
+      "hours": 100,
+      "year": 2021
+    },
+    {
+      "id": 6,
+      "brand": "Tracker",
+      "model": "Pro Team 190 TX",
+      "reg": "TRK13579",
+      "hours": 300,
+      "year": 2016
+    }
+  ]
+}
