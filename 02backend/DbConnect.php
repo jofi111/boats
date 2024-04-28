@@ -1,4 +1,5 @@
 <?php
+//backend k boats - nastaveni pripojeni k db
 class DbConnect 
 {
     //vlastnosti tridy
