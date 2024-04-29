@@ -12,3 +12,5 @@ $database = $connection->connect(); //zavolani metody connect, kt vrati pdo obje
 $sql = "SELECT * FROM boats";
 $stmt = $database->prepare($sql); //pozadavek=statement, do db se posle dotaz (viz o radek vyse)
 $stmt->execute(); //zavolani metody execute
+$boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+var_dump($boats);
