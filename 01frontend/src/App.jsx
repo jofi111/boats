@@ -4,7 +4,7 @@ import rawData from "./rawData.json";
 import BoatTable from "./components/BoatTable/BoatTable";
 import Form from "./components/Form/Form";
 import FilterForm from "./components/FilterForm/FilterForm";
-import { axios } from "axios";
+import axios from "axios";
 
 function App() {
   //const [boats, setBoats] = useState(rawData.boats);
