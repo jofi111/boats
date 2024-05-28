@@ -27,7 +27,8 @@ function App() {
     year: "",
   });
 
-  const [boatsToShow, setBoatsToShow] = useState(rawData.boats);
+  //const [boatsToShow, setBoatsToShow] = useState(rawData.boats);
+  const [boatsToShow, setBoatsToShow] = useState([]); //defaultni hodnotou je nastavene prazdne pole
 
   const handleNewData = (updatedBoat, source) => {
     switch (source) {
