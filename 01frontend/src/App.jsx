@@ -4,7 +4,7 @@ import rawData from "./rawData.json";
 import BoatTable from "./components/BoatTable/BoatTable";
 import Form from "./components/Form/Form";
 import FilterForm from "./components/FilterForm/FilterForm";
-import { Axios } from "axios";
+import { axios } from "axios";
 
 function App() {
   //const [boats, setBoats] = useState(rawData.boats);
@@ -29,6 +29,16 @@ function App() {
 
   //const [boatsToShow, setBoatsToShow] = useState(rawData.boats);
   const [boatsToShow, setBoatsToShow] = useState([]); //defaultni hodnotou je nastavene prazdne pole
+
+  //GET data
+  const getBoats = () => {
+    axios.get("http://localhost/?action=getAll").then((response) => {
+      console.log(response.data);
+    });
+  };
+  useEffect(() => {
+    getBoats();
+  }, []);
 
   const handleNewData = (updatedBoat, source) => {
     switch (source) {
