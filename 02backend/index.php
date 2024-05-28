@@ -6,11 +6,12 @@ header("Content-Type: application/json; charset=utf-8"); //komunikace mezi klien
 
 include("./DbConnect.php");
 
-$connection = new DbConnect();
-$database = $connection->connect(); //zavolani metody connect, kt vrati pdo objekt=pripojeni
+$connection = new DbConnect(); //vytvori instanci tridy dbconnect
+$database = $connection->connect(); //zavolani metody connect, kt vrati pdo objekt (=pripojeni)
 
 $sql = "SELECT * FROM boats";
 $stmt = $database->prepare($sql); //pozadavek=statement, do db se posle dotaz (viz o radek vyse)
 $stmt->execute(); //zavolani metody execute
 $boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-var_dump($boats);
+//var_dump($boats);
+echo json_encode($boats);
