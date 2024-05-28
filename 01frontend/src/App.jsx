@@ -7,7 +7,8 @@ import FilterForm from "./components/FilterForm/FilterForm";
 import { Axios } from "axios";
 
 function App() {
-  const [boats, setBoats] = useState(rawData.boats);
+  //const [boats, setBoats] = useState(rawData.boats);
+  const [boats, setBoats] = useState([]); //defaultni hodnotou je nastavene prazdne pole
   const [newBoat, setNewBoat] = useState({
     id: boats.length > 0 ? Math.max(...boats.map((boat) => boat.id)) + 1 : 1,
     brand: "",
