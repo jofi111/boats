@@ -9,9 +9,19 @@ include("./DbConnect.php");
 $connection = new DbConnect(); //vytvori instanci tridy dbconnect
 $database = $connection->connect(); //zavolani metody connect, kt vrati pdo objekt (=pripojeni)
 
-$sql = "SELECT * FROM boats";
-$stmt = $database->prepare($sql); //pozadavek=statement, do db se posle dotaz (viz o radek vyse)
-$stmt->execute(); //zavolani metody execute
-$boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-//var_dump($boats);
-echo json_encode($boats);
+$method = _SERVER['REQUEST_METHOD'];
+
+switch ($method) {
+    case 'GET' :
+        $action = $_GET['action'];
+        if ($action == 'getAll'){
+            $sql = "SELECT * FROM boats";
+            $stmt = $database->prepare($sql); //pozadavek=statement, do db se posle dotaz (viz o radek vyse)
+            $stmt->execute(); //zavolani metody execute
+            $boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+            //var_dump($boats);
+            echo json_encode($boats);
+        }
+        break;
+    default: break;
+}
