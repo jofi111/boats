@@ -9,7 +9,7 @@ include("./DbConnect.php");
 $connection = new DbConnect(); //vytvori instanci tridy dbconnect
 $database = $connection->connect(); //zavolani metody connect, kt vrati pdo objekt (=pripojeni)
 
-$method = _SERVER['REQUEST_METHOD'];
+$method = $_SERVER['REQUEST_METHOD'];
 
 switch ($method) {
     case 'GET' :
