@@ -32,10 +32,20 @@ function App() {
 
   //GET data
   const getBoats = () => {
-    axios.get("http://localhost:3000/?action=getAll").then((response) => {
-      setBoats(response.data);
-      setBoatsToShow(response.data);
-    });
+    axios
+      .get("http://localhost:3000/?action=getAll")
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setBoats(response.data);
+          setBoatsToShow(response.data);
+        } else {
+          console.log("Server response is not an array.");
+        }
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        alert(`Server error: ${error}`);
+      });
   };
   useEffect(() => {
     getBoats();
