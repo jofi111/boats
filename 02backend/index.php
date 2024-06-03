@@ -20,7 +20,26 @@ switch ($method) {
             $stmt->execute(); //zavolani metody execute
             $boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
             //var_dump($boats);
-            echo json_encode($boats);
+            echo json_encode($boats,JSON_UNESCAPED_UNICODE);
+        } else if ($action == "getSpec"){
+            $idsParam = isset($_GET['ids']) ? $_GET['ids'] : '';
+            $ids = explode(',', $idsParam);
+            $ids = array_filter($ids, function ($value) {
+                return $value != '';
+            });
+            //SELECT * FROM boats WHERE id IN ($STRING)
+            $ids = implode(',', array_map('intval', $ids));
+            if($ids != ''){
+                $sql = "SELECT * FROM boats WHERE id IN ($ids)";
+                $stmt = $database->prepare($sql); //pozadavek=statement, do db se posle dotaz (viz o radek vyse)
+                $stmt->execute(); //zavolani metody execute
+                $boats = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+                //var_dump($boats);
+                echo json_encode($boats,JSON_UNESCAPED_UNICODE); 
+                //pridan parametr JSON_UNESCAPED_UNICODE pro spravne zobrazeni ceskych znaku
+            } else {
+                echo json_encode([]);
+            }
         }
         break;
     default: break;
