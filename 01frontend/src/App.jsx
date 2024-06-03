@@ -32,8 +32,9 @@ function App() {
 
   //GET data
   const getBoats = () => {
-    axios.get("http://localhost/?action=getAll").then((response) => {
-      console.log(response.data);
+    axios.get("http://localhost:3000/?action=getAll").then((response) => {
+      setBoats(response.data);
+      setBoatsToShow(response.data);
     });
   };
   useEffect(() => {
