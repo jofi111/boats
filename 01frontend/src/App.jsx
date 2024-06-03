@@ -30,7 +30,7 @@ function App() {
   //const [boatsToShow, setBoatsToShow] = useState(rawData.boats);
   const [boatsToShow, setBoatsToShow] = useState([]); //defaultni hodnotou je nastavene prazdne pole
 
-  //GET data
+  //GET data - vsechna data
   const getBoats = () => {
     axios
       .get("http://localhost:3000/?action=getAll")
@@ -50,6 +50,24 @@ function App() {
   useEffect(() => {
     getBoats();
   }, []);
+
+  //GET data - specificka data na zaklade id
+  const filterBoats = (ids) => {
+    const param = ids.join();
+    axios
+      .get(`http://localhost:3000/?action=getSpec&ids=${param}`)
+      .then((response) => {
+        if (Array.isArray(response.data)) {
+          setBoatsToShow(response.data);
+        } else {
+          console.log("Server response is not an array.");
+        }
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        alert(`Server error: ${error}`);
+      });
+  };
 
   const handleNewData = (updatedBoat, source) => {
     switch (source) {
@@ -172,7 +190,9 @@ function App() {
   // }, [boats]);
 
   const handleFilterData = (filteredBoats) => {
-    setBoatsToShow(filteredBoats);
+    //setBoatsToShow(filteredBoats);
+    const ids = filteredBoats.map((boat) => boat.id);
+    filterBoats(ids);
   };
 
   return (
