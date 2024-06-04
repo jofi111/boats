@@ -76,5 +76,6 @@ switch ($method) {
         }
         echo json_encode($data);
         break;
+        //commit POST se mi z nejakeho duvodu nacetl do commmitu frontendu, ktery jsem ulozil pred chvili
     default: break;
 }
