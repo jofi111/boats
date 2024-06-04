@@ -54,6 +54,9 @@ switch ($method) {
             $data = ['status' => 1, 'message' => 'Boat deleted.'];
         } else {
             $data = ['status' => 0, 'message' => 'Error during deletion of boat.'];
+        } else {
+            $data = ['status' => 0, 'message' => 'ID of the boat was not numeric.'];
         }
+        echo json_encode($data);
     default: break;
 }
