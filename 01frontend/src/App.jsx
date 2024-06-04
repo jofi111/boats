@@ -10,7 +10,7 @@ function App() {
   //const [boats, setBoats] = useState(rawData.boats);
   const [boats, setBoats] = useState([]); //defaultni hodnotou je nastavene prazdne pole
   const [newBoat, setNewBoat] = useState({
-    id: boats.length > 0 ? Math.max(...boats.map((boat) => boat.id)) + 1 : 1,
+    //id: boats.length > 0 ? Math.max(...boats.map((boat) => boat.id)) + 1 : 1,
     brand: "",
     model: "",
     reg: "",
@@ -62,6 +62,21 @@ function App() {
         } else {
           console.log("Server response is not an array.");
         }
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        alert(`Server error: ${error}`);
+      });
+  };
+
+  //POST - vkladani lodi
+  const insertBoat = () => {
+    axios
+      .post("http://localhost/boats/", boat)
+      .then((response) => {
+        console.log(response.data);
+        getBoats();
+        alert("Boat successfully added.");
       })
       .catch((error) => {
         console.error("Server error:", error);
@@ -128,12 +143,13 @@ function App() {
       case "add-boat-form": {
         temp = inputsCheck(newBoat);
         if (confirmBoat(temp)) {
-          const boatsToUpdate = [...boats];
-          boatsToUpdate.push(temp);
-          setBoats(boatsToUpdate);
-          setBoatsToShow(boatsToUpdate);
+          //const boatsToUpdate = [...boats];
+          //boatsToUpdate.push(temp);
+          //setBoats(boatsToUpdate);
+          //setBoatsToShow(boatsToUpdate);
+          insertBoat(temp);
           setNewBoat({
-            id: newBoat.id + 1,
+            //id: newBoat.id + 1,
             brand: "",
             model: "",
             reg: "",
