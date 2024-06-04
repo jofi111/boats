@@ -58,5 +58,23 @@ switch ($method) {
             $data = ['status' => 0, 'message' => 'ID of the boat was not numeric.'];
         }
         echo json_encode($data);
+        break;
+    case 'POST':
+        $boat = json_decode(file_get_contents('php://input'));
+        $sql = "INSERT INTO boat(brand, model, reg, hours, year) VALUES(:brand, :model, :reg, :hours, :year)";
+        // : znamenaji bind parametry
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(':brand', $boat->brand);
+        $stmt->bindParam(':model', $boat->model);
+        $stmt->bindParam(':reg', $boat->reg);
+        $stmt->bindParam(':hours', $boat->hours);
+        $stmt->bindParam(':year', $boat->year);
+        if ($stmt->execute()) {
+            $data = ['status' => 1, 'message' => 'Boat added.'];
+        } else {
+            $data = ['status' => 0, 'message' => 'Error during addition of boat.'];
+        }
+        echo json_encode($data);
+        break;
     default: break;
 }

@@ -69,6 +69,21 @@ function App() {
       });
   };
 
+  //PUT - aktualizace konkretni lode
+  const updateBoat = (boat) => {
+    axios
+      .put("http://localhost/boats/", boat)
+      .then((response) => {
+        console.log(response.data);
+        getBoats();
+        alert("Boat successfully updated.");
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        alert(`Server error: ${error}`);
+      });
+  };
+
   //POST - vkladani lodi
   const insertBoat = () => {
     axios
@@ -167,10 +182,11 @@ function App() {
         if (confirmBoat(temp)) {
           const index = boats.findIndex((boat) => boat.id === temp.id);
           if (index !== -1) {
-            const boatsToUpdate = [...boats];
-            boatsToUpdate[index] = temp;
-            setBoats(boatsToUpdate);
-            setBoatsToShow(boatsToUpdate);
+            //const boatsToUpdate = [...boats];
+            //boatsToUpdate[index] = temp;
+            //setBoats(boatsToUpdate);
+            //setBoatsToShow(boatsToUpdate);
+            updateBoat(temp);
             setBoatToEdit({
               id: 0,
               brand: "",
