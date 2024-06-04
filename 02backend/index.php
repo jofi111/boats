@@ -77,5 +77,23 @@ switch ($method) {
         echo json_encode($data);
         break;
         //commit POST se mi z nejakeho duvodu nacetl do commmitu frontendu, ktery jsem ulozil pred chvili
+    case 'PUT':
+        $boat = json_decode(file_get_contents('php://input'));
+        $sql = "UPDATE boats SET brand= :brand, model= :model, reg= :reg, hours= :hours, year= :year WHERE id= :id";
+        // : znamenaji bind parametry
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(':id', $boat->id);
+        $stmt->bindParam(':brand', $boat->brand);
+        $stmt->bindParam(':model', $boat->model);
+        $stmt->bindParam(':reg', $boat->reg);
+        $stmt->bindParam(':hours', $boat->hours);
+        $stmt->bindParam(':year', $boat->year);
+        if ($stmt->execute()) {
+            $data = ['status' => 1, 'message' => 'Boat added.'];
+        } else {
+            $data = ['status' => 0, 'message' => 'Error during addition of boat.'];
+        }
+        echo json_encode($data);
+        break;
     default: break;
 }
