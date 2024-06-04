@@ -69,6 +69,21 @@ function App() {
       });
   };
 
+  //DELETE
+  const deleteBoat = (id) => {
+    axios
+      .delete(`http://localhost/boats/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        getBoats();
+        alert("Boat successfully deleted.");
+      })
+      .catch((error) => {
+        console.error("Server error:", error);
+        alert(`Server error: ${error}`);
+      });
+  };
+
   const handleNewData = (updatedBoat, source) => {
     switch (source) {
       case "add-boat-form": {
@@ -171,9 +186,10 @@ function App() {
   };
 
   const handleDelete = (idToDel) => {
-    const temp = boats.filter((boat) => boat.id !== idToDel);
-    setBoats(temp);
-    setBoatsToShow(temp);
+    // const temp = boats.filter((boat) => boat.id !== idToDel);
+    // setBoats(temp);
+    // setBoatsToShow(temp);
+    deleteBoat(idToDel);
   };
 
   const handleEdit = (idToEdit) => {

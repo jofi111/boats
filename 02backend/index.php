@@ -42,5 +42,18 @@ switch ($method) {
             }
         }
         break;
+    case 'DELETE':
+        break;
+        $requestUrl = $_SERVER['REQUEST_URI'];
+        $pathSegment = explode('/', trim($requestUrl, '/'));
+        $boatId = $pathSegment[count($pathSegment)-1];
+        $sql  = "DELETE FROM boats WHERE id=:id";
+        $stmt = $database->prepare($sql);
+        $stmt->bindParam(':id', $boatID, PDO::PARAM_INT);
+        if($stmt->execute()) {
+            $data = ['status' => 1, 'message' => 'Boat deleted.'];
+        } else {
+            $data = ['status' => 0, 'message' => 'Error during deletion of boat.'];
+        }
     default: break;
 }
